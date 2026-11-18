@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student</title>
+
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #eee8fa, #f8f6ff);
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+        }
+
+        .form-box {
+            max-width: 520px;
+            margin: 55px auto;
+            background: white;
+            padding: 38px;
+            border-radius: 20px;
+            box-shadow: 0 12px 35px rgba(86, 55, 131, 0.14);
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background: #eee6fa;
+            color: #69439b;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: auto;
+        }
+
+        h1 {
+            color: #563783;
+            font-size: 25px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 13px;
+        }
+
+        .form-label {
+            color: #493568;
+            font-weight: 600;
+        }
+
+        .form-control, .form-select {
+            border: 1px solid #ded3ed;
+            border-radius: 10px;
+            padding: 12px;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #7655a5;
+            box-shadow: 0 0 0 3px rgba(118, 85, 165, 0.13);
+        }
+
+        .btn-purple {
+            background: #69439b;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .btn-purple:hover {
+            background: #4e2d7b;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-back {
+            color: #69439b;
+            border: 1px solid #69439b;
+            border-radius: 9px;
+            padding: 7px 16px;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .btn-back:hover {
+            background: #69439b;
+            color: white;
+        }
+
+        @media(max-width: 576px) {
+            .form-box {
+                margin: 25px 10px;
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="form-box">
+
+        <div class="icon-box mb-3">✏️</div>
+
+        <h1 class="text-center">Edit Student</h1>
+
+        <p class="subtitle text-center mb-4">
+            Update the existing student information
+        </p>
+
+        <div class="mb-4">
+            <a href="{% url 'allstudents' %}" class="btn-back">
+                ← Back to Students
+            </a>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            {% bootstrap_form editForm %}
+
+            <button type="submit" class="btn btn-purple w-100 mt-3">
+                Update Student
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>
